@@ -20,6 +20,7 @@
             --terracotta: #cc8a6f;
             --dark-brown: #3a3330;
             --paper: #e7e0d6;
+            --transition: all 0.3s ease;
         }
 
         body {
@@ -44,12 +45,13 @@
 
         /* Header Styles */
         header {
-            background-color: rgba(248, 246, 242, 0.9);
+            background-color: rgba(248, 246, 242, 0.95);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(58, 51, 48, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         .header-content {
@@ -66,6 +68,11 @@
             text-decoration: none;
             display: flex;
             align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
         }
 
         .logo i {
@@ -86,7 +93,7 @@
             text-decoration: none;
             color: var(--dark-brown);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
             position: relative;
         }
 
@@ -116,11 +123,16 @@
             border: none;
             color: var(--dark-brown);
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--terracotta);
         }
 
         /* Hero Section */
         .hero {
-            padding: 100px 0;
+            padding: 120px 0;
             text-align: center;
             background: linear-gradient(rgba(248, 246, 242, 0.7), rgba(248, 246, 242, 0.7)), url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%239caf96" fill-opacity="0.1" fill-rule="evenodd"/%3E%3C/svg%3E');
             background-attachment: fixed;
@@ -130,12 +142,14 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            animation: fadeIn 1s ease-out;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             color: var(--dark-brown);
+            line-height: 1.2;
         }
 
         .hero p {
@@ -147,27 +161,38 @@
             margin-right: auto;
         }
 
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 12px 30px;
             background-color: var(--terracotta);
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: var(--transition);
             border: 2px solid var(--terracotta);
+            gap: 8px;
         }
 
         .btn:hover {
             background-color: transparent;
             color: var(--terracotta);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(204, 138, 111, 0.3);
         }
 
         .btn-outline {
             background-color: transparent;
             color: var(--terracotta);
-            margin-left: 15px;
         }
 
         .btn-outline:hover {
@@ -210,7 +235,7 @@
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
 
         .portfolio-item {
@@ -285,6 +310,12 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .about-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .about-img img {
@@ -313,8 +344,13 @@
 
         .info-item {
             display: flex;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             align-items: center;
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
         }
 
         .info-item i {
@@ -363,26 +399,82 @@
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background-color: var(--sage);
             color: white;
             border-radius: 50%;
             text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.2rem;
+            transition: var(--transition);
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .social-links a:hover::before {
+            left: 100%;
         }
 
         .social-links a:hover {
             background-color: var(--terracotta);
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(156, 175, 150, 0.4);
+        }
+
+        .social-links a:nth-child(1):hover {
+            background: linear-gradient(45deg, #3b5998, #3b5998);
+        }
+
+        .social-links a:nth-child(2):hover {
+            background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+        }
+
+        .social-links a:nth-child(3):hover {
+            background: linear-gradient(45deg, #db4437, #db4437);
+        }
+
+        .social-links a:nth-child(4):hover {
+            background: linear-gradient(45deg, #ff5e7d, #ff5e7d);
+        }
+
+        .social-links .social-tooltip {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark-brown);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .social-links a:hover .social-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: -35px;
         }
 
         .contact-form {
@@ -402,12 +494,20 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 15px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 8px;
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             background-color: var(--cream);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(156, 175, 150, 0.2);
         }
 
         .form-group textarea {
@@ -419,7 +519,7 @@
         footer {
             background-color: var(--dark-brown);
             color: white;
-            padding: 50px 0 20px;
+            padding: 60px 0 20px;
             text-align: center;
         }
 
@@ -433,6 +533,11 @@
             font-size: 2rem;
             margin-bottom: 20px;
             display: block;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            color: var(--sage);
         }
 
         .footer-links {
@@ -440,16 +545,33 @@
             justify-content: center;
             gap: 30px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--sage);
+            transition: width 0.3s;
         }
 
         .footer-links a:hover {
             color: var(--sage);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
         }
 
         .copyright {
@@ -468,12 +590,50 @@
         .developer-credit a {
             color: var(--sage);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
 
         .developer-credit a:hover {
             color: var(--terracotta);
             text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--terracotta);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--dark-brown);
+            transform: translateY(-5px);
         }
 
         /* Responsive Styles */
@@ -489,6 +649,12 @@
             .contact-content {
                 flex-direction: column;
             }
+
+            .social-links a {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -502,6 +668,7 @@
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
             }
             
             nav ul.active {
@@ -516,6 +683,10 @@
                 display: block;
             }
             
+            .hero {
+                padding: 100px 0;
+            }
+
             .hero h1 {
                 font-size: 2.2rem;
             }
@@ -524,14 +695,13 @@
                 font-size: 1rem;
             }
             
-            .btn {
-                display: block;
-                margin: 10px auto;
-                width: 200px;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .btn-outline {
-                margin-left: 0;
+            .btn {
+                width: 200px;
             }
             
             .portfolio-grid {
@@ -539,7 +709,25 @@
             }
             
             .footer-links {
-                flex-wrap: wrap;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
             }
         }
 
@@ -560,14 +748,18 @@
                 font-size: 2rem;
             }
             
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
             .social-links a {
                 width: 45px;
                 height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -600,8 +792,12 @@
             <h1>Capturing Friendship, Joy & Cottagecore Dreams</h1>
             <p>Through my lens, I preserve the magic of genuine connections, the warmth of nostalgia, and the beauty of simple moments.</p>
             <div class="hero-buttons">
-                <a href="#portfolio" class="btn">Explore My World</a>
-                <a href="#contact" class="btn btn-outline">Share Happiness</a>
+                <a href="#portfolio" class="btn">
+                    <i class="fas fa-images"></i>Explore My World
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fas fa-heart"></i>Share Happiness
+                </a>
             </div>
         </div>
     </section>
@@ -711,17 +907,21 @@
                         <p>Let's create something beautiful together. Reach out for collaborations, photoshoots, or just to share stories about cottagecore life and nostalgic moments.</p>
                         
                         <div class="social-links">
-                            <a href="https://www.facebook.com/subina.kc.969" target="_blank" title="Facebook">
+                            <a href="https://www.facebook.com/subina.kc.969" target="_blank">
                                 <i class="fab fa-facebook-f"></i>
+                                <span class="social-tooltip">Facebook</span>
                             </a>
-                            <a href="https://www.instagram.com/kc__subeena__" target="_blank" title="Instagram">
+                            <a href="https://www.instagram.com/kc__subeena__" target="_blank">
                                 <i class="fab fa-instagram"></i>
+                                <span class="social-tooltip">Instagram</span>
                             </a>
-                            <a href="#" title="Email">
+                            <a href="#">
                                 <i class="far fa-envelope"></i>
+                                <span class="social-tooltip">Email</span>
                             </a>
-                            <a href="#" title="Share Joy">
+                            <a href="#">
                                 <i class="fas fa-heart"></i>
+                                <span class="social-tooltip">Share Joy</span>
                             </a>
                         </div>
                     </div>
@@ -730,17 +930,19 @@
                     <form>
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" placeholder="Enter your name">
+                            <input type="text" id="name" placeholder="Enter your name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" placeholder="Enter your email">
+                            <input type="email" id="email" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" placeholder="Tell me about your vision or just say hello!"></textarea>
+                            <textarea id="message" placeholder="Tell me about your vision or just say hello!" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Joy</button>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i>Send Joy
+                        </button>
                     </form>
                 </div>
             </div>
@@ -750,12 +952,22 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-           
+            <a href="#" class="footer-logo">KC Subeena Photography</a>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About</a>
+                <a href="#contact">Connect</a>
             </div>
             <p class="copyright">© 2023 KC Subeena Photography. All rights reserved.</p>
             <p class="developer-credit">Made with <i class="fas fa-heart" style="color: var(--terracotta);"></i> by <a href="https://msr-portfolio.vercel.app/" target="_blank">MSR</a></p>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <script>
         // Mobile menu toggle
@@ -790,6 +1002,25 @@
                     });
                 }
             });
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Form submission (prevent default)
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form and your message has not been sent.');
+            form.reset();
         });
     </script>
 </body>
