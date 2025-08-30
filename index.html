@@ -95,6 +95,13 @@
             font-weight: 500;
             transition: var(--transition);
             position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a i {
+            margin-right: 8px;
+            font-size: 18px;
         }
 
         nav a:hover {
@@ -406,58 +413,41 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background-color: var(--sage);
             color: white;
             border-radius: 50%;
             text-decoration: none;
             transition: var(--transition);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.5s;
-        }
-
-        .social-links a:hover::before {
-            left: 100%;
         }
 
         .social-links a:hover {
-            background-color: var(--terracotta);
-            transform: translateY(-5px) scale(1.1);
+            transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(156, 175, 150, 0.4);
         }
 
-        .social-links a:nth-child(1):hover {
-            background: linear-gradient(45deg, #3b5998, #3b5998);
+        .social-links a.facebook:hover {
+            background-color: #3b5998;
         }
 
-        .social-links a:nth-child(2):hover {
+        .social-links a.instagram:hover {
             background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
         }
 
-        .social-links a:nth-child(3):hover {
-            background: linear-gradient(45deg, #db4437, #db4437);
+        .social-links a.email:hover {
+            background-color: #db4437;
         }
 
-        .social-links a:nth-child(4):hover {
-            background: linear-gradient(45deg, #ff5e7d, #ff5e7d);
+        .social-links a.joy:hover {
+            background-color: #ff5e7d;
         }
 
-        .social-links .social-tooltip {
+        .social-tooltip {
             position: absolute;
-            bottom: -40px;
+            bottom: -35px;
             left: 50%;
             transform: translateX(-50%);
             background-color: var(--dark-brown);
@@ -474,7 +464,6 @@
         .social-links a:hover .social-tooltip {
             opacity: 1;
             visibility: visible;
-            bottom: -35px;
         }
 
         .contact-form {
@@ -553,6 +542,12 @@
             text-decoration: none;
             transition: var(--transition);
             position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 8px;
         }
 
         .footer-links a::after {
@@ -572,6 +567,31 @@
 
         .footer-links a:hover::after {
             width: 100%;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--sage);
+            transform: translateY(-3px);
         }
 
         .copyright {
@@ -651,9 +671,9 @@
             }
 
             .social-links a {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
             }
         }
 
@@ -718,9 +738,9 @@
             }
 
             .social-links a {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
 
             .back-to-top {
@@ -749,9 +769,9 @@
             }
             
             .social-links a {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
 
             .back-to-top {
@@ -777,10 +797,10 @@
             </button>
             <nav>
                 <ul id="menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Connect</a></li>
+                    <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+                    <li><a href="#portfolio"><i class="fas fa-images"></i>Portfolio</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i>About</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i>Connect</a></li>
                 </ul>
             </nav>
         </div>
@@ -835,13 +855,6 @@
                     <div class="portfolio-overlay">
                         <h3 class="portfolio-title">Forest Adventures</h3>
                         <p class="portfolio-category">Exploration & Fun</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1559622214-5ed79e10d7f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tea Time" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Tea Time Tales</h3>
-                        <p class="portfolio-category">Shared Stories</p>
                     </div>
                 </div>
                 <div class="portfolio-item">
@@ -907,19 +920,19 @@
                         <p>Let's create something beautiful together. Reach out for collaborations, photoshoots, or just to share stories about cottagecore life and nostalgic moments.</p>
                         
                         <div class="social-links">
-                            <a href="https://www.facebook.com/subina.kc.969" target="_blank">
+                            <a href="https://www.facebook.com/subina.kc.969" target="_blank" class="facebook">
                                 <i class="fab fa-facebook-f"></i>
                                 <span class="social-tooltip">Facebook</span>
                             </a>
-                            <a href="https://www.instagram.com/kc__subeena__" target="_blank">
+                            <a href="https://www.instagram.com/kc__subeena__" target="_blank" class="instagram">
                                 <i class="fab fa-instagram"></i>
                                 <span class="social-tooltip">Instagram</span>
                             </a>
-                            <a href="#">
+                            <a href="#" class="email">
                                 <i class="far fa-envelope"></i>
                                 <span class="social-tooltip">Email</span>
                             </a>
-                            <a href="#">
+                            <a href="#" class="joy">
                                 <i class="fas fa-heart"></i>
                                 <span class="social-tooltip">Share Joy</span>
                             </a>
@@ -954,10 +967,15 @@
         <div class="container footer-content">
             <a href="#" class="footer-logo">KC Subeena Photography</a>
             <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#about">About</a>
-                <a href="#contact">Connect</a>
+                <a href="#home"><i class="fas fa-home"></i>Home</a>
+                <a href="#portfolio"><i class="fas fa-images"></i>Portfolio</a>
+                <a href="#about"><i class="fas fa-user"></i>About</a>
+                <a href="#contact"><i class="fas fa-envelope"></i>Connect</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/subina.kc.969" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/kc__subeena__" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="far fa-envelope"></i></a>
             </div>
             <p class="copyright">© 2023 KC Subeena Photography. All rights reserved.</p>
             <p class="developer-credit">Made with <i class="fas fa-heart" style="color: var(--terracotta);"></i> by <a href="https://msr-portfolio.vercel.app/" target="_blank">MSR</a></p>
